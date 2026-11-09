@@ -1,5 +1,5 @@
 const postListEl = document.querySelector('.post-list');
-const id = localStorage.getItem("id");
+const id = localStorage.getItem("userId");
 
 async function onSearchChange(event) {
 const id = event.target.value;
@@ -9,7 +9,7 @@ const id = event.target.value;
 async function renderPosts(id) {
   
   const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${ id}`);
-  const postsData = await response.json();
+  const postsData = await posts.json();
   console.log(postsData);
 
   postListEl.innerHTML = postsData.map(post => postHTML(post)).join('');
